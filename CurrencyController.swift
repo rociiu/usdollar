@@ -15,4 +15,7 @@ class CurrencyController: NSViewController {
         // Do view setup here.
     }
     
+    @IBAction func exitApp(sender: AnyObject) {
+        NSApplication.sharedApplication().terminate(sender)
+    }
 }

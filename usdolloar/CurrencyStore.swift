@@ -11,7 +11,7 @@ import Foundation
 class CurrencyStore {
     let latestCurrency: Float = 0.0
     
-    func fetchLatestCurrency() {
+    func fetchLatestCurrency(completeHanlder: Double -> Void) {
         let urlString = "https://api.fixer.io/latest?base=USD"
         
         if let url = NSURL(string: urlString) {
@@ -28,6 +28,7 @@ class CurrencyStore {
                         let rates = json["rates"] as! [String: AnyObject]
                         let currency = rates["CNY"] as! Double
                         print(currency)
+                        completeHanlder(currency)
                     } catch {
                         print("error")
                     }

@@ -13,7 +13,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
-    let usdCurrency = 6.51
+    let usdCurrency = 0.0
     let popover = NSPopover()
     let store = CurrencyStore()
 
@@ -28,7 +28,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         popover.contentViewController = CurrencyController(nibName: "CurrencyController", bundle: nil)
         
-        store.fetchLatestCurrency()
+        store.fetchLatestCurrency({
+            (currency: Double) in
+            if let button = self.statusItem.button {
+                button.title = "$\(currency)"
+            }
+        })
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
