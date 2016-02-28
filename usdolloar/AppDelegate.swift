@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let usdCurrency = 0.0
     let popover = NSPopover()
     let store = CurrencyStore()
+    var eventMonitor = EventMonitor?()
 
     @IBOutlet weak var window: NSWindow!
 
@@ -34,6 +35,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 button.title = "$\(currency)"
             }
         })
+        
+        eventMonitor = EventMonitor(mask: NSEventMask.LeftMouseDownMask.union(NSEventMask.RightMouseDownMask)) { [unowned self] event in
+            if self.popover.shown {
+                self.closePopover(event!)
+            }
+        }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -57,9 +64,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             popover.showRelativeToRect(button.bounds, ofView: button, preferredEdge: NSRectEdge.MinY)
         }
+        eventMonitor?.start()
     }
     
     func closePopover(sender: AnyObject) {
+        eventMonitor?.stop()
         popover.performClose(sender)
     }
 }
