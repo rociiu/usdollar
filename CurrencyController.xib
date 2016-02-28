@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CurrencyController" customModule="usdolloar" customModuleProvider="target">
             <connections>
+                <outlet property="lineChartView" destination="Mf9-mb-If2" id="QVf-Rx-VMW"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -26,6 +27,9 @@
                         <action selector="exitApp:" target="-2" id="5cM-Dr-bym"/>
                     </connections>
                 </button>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mf9-mb-If2" customClass="LineChartView" customModule="usdolloar" customModuleProvider="target">
+                    <rect key="frame" x="20" y="56" width="440" height="196"/>
+                </customView>
             </subviews>
         </customView>
     </objects>

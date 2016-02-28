@@ -13,6 +13,7 @@
 		74E6A8BD1C8179AA0073F89A /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6A8BB1C8179AA0073F89A /* CurrencyController.swift */; };
 		74E6A8BE1C8179AA0073F89A /* CurrencyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E6A8BC1C8179AA0073F89A /* CurrencyController.xib */; };
 		74E6A8C01C817D0E0073F89A /* CurrencyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6A8BF1C817D0E0073F89A /* CurrencyStore.swift */; };
+		74E6A8C21C8280260073F89A /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6A8C11C8280260073F89A /* LineChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		74E6A8BB1C8179AA0073F89A /* CurrencyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyController.swift; path = ../CurrencyController.swift; sourceTree = "<group>"; };
 		74E6A8BC1C8179AA0073F89A /* CurrencyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurrencyController.xib; path = ../CurrencyController.xib; sourceTree = "<group>"; };
 		74E6A8BF1C817D0E0073F89A /* CurrencyStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyStore.swift; sourceTree = "<group>"; };
+		74E6A8C11C8280260073F89A /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				74E6A8B21C81366A0073F89A /* MainMenu.xib */,
 				74E6A8B51C81366A0073F89A /* Info.plist */,
 				74E6A8BF1C817D0E0073F89A /* CurrencyStore.swift */,
+				74E6A8C11C8280260073F89A /* LineChartView.swift */,
 			);
 			path = usdolloar;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				74E6A8BD1C8179AA0073F89A /* CurrencyController.swift in Sources */,
 				74E6A8AF1C81366A0073F89A /* AppDelegate.swift in Sources */,
 				74E6A8C01C817D0E0073F89A /* CurrencyStore.swift in Sources */,
+				74E6A8C21C8280260073F89A /* LineChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
