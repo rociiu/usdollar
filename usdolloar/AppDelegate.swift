@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let usdCurrency = 0.0
     let popover = NSPopover()
     let store = CurrencyStore()
+    var timer = NSTimer?()
     var eventMonitor = EventMonitor?()
 
     @IBOutlet weak var window: NSWindow!
@@ -29,18 +30,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         popover.contentViewController = CurrencyController(nibName: "CurrencyController", bundle: nil)
         
+        self.refreshCurrency()
+ 
+        eventMonitor = EventMonitor(mask: NSEventMask.LeftMouseDownMask.union(NSEventMask.RightMouseDownMask)) { [unowned self] event in
+            if self.popover.shown {
+                self.closePopover(event!)
+            }
+        }
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(60 * 60, target: self, selector: "refreshCurrency", userInfo: nil, repeats: true)
+    }
+
+    func refreshCurrency() {
         store.fetchLatestCurrency({
             (currency: Double) in
             if let button = self.statusItem.button {
                 button.title = "$\(currency)"
             }
         })
-        
-        eventMonitor = EventMonitor(mask: NSEventMask.LeftMouseDownMask.union(NSEventMask.RightMouseDownMask)) { [unowned self] event in
-            if self.popover.shown {
-                self.closePopover(event!)
-            }
-        }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
