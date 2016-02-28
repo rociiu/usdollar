@@ -59,11 +59,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             closePopover(sender)
         } else {
             showPopover(sender)
-            store.fetchPastSevenDaysCurrencies({
-                (pastWeekDaysCurrencies: [Int: Double]) in
-                print("return past week currencies")
-                print(pastWeekDaysCurrencies)
-            })
         }
     }
     

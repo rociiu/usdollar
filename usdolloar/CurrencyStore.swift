@@ -21,7 +21,7 @@ extension Int {
 
 class CurrencyStore {
     let latestCurrency: Float = 0.0
-    var pastWeekCurrencies: [Int: Double] = [Int: Double]()
+    var pastWeekCurrencies: [NSDate: Double] = [NSDate: Double]()
     
     func fetchLatestCurrency(completeHanlder: Double -> Void) {
         let urlString = "https://api.fixer.io/latest?base=USD"
@@ -80,16 +80,16 @@ class CurrencyStore {
         }
     }
 
-    func fetchPastSevenDaysCurrencies(completeHanlder: [Int: Double] -> Void) {
+    func fetchPastTwentyDaysCurrencies(completeHanlder: [NSDate: Double] -> Void) {
         var dates = [NSDate]()
-        for i in 1...7 {
+        for i in 1...20 {
             dates.append(i.daysAgo)
         }
-        for (index, date) in dates.enumerate() {
+        for date in dates {
             self.fetchCurrencyWithDate(date, completeHandler: {
                 (currency: Double) in
-                self.pastWeekCurrencies[index] = currency
-                if self.pastWeekCurrencies.count == 7 {
+                self.pastWeekCurrencies[date] = currency
+                if self.pastWeekCurrencies.count == 20 {
                     completeHanlder(self.pastWeekCurrencies)
                 }
             })

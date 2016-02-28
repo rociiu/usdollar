@@ -18,7 +18,7 @@ class LineChartView: NSView {
         let points = calculatePoints()
         let line = NSBezierPath(rect: dirtyRect);
 
-        for (index, point) in points.enumerate() {
+        for point in points {
             line.lineToPoint(NSPoint(x: point.x, y: point.y))
         }
         line.lineWidth = 2.0

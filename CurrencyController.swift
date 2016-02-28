@@ -11,6 +11,7 @@ import Cocoa
 class CurrencyController: NSViewController {
 
     @IBOutlet weak var lineChartView: LineChartView!
+    var store = CurrencyStore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,17 @@ class CurrencyController: NSViewController {
     }
     
     override func viewDidAppear() {
-        lineChartView.setLineChartData(["a", "b", "c", "d", "e"], data: [6.51, 6.52, 6.53, 6.54, 6.59])
+        store.fetchPastTwentyDaysCurrencies({
+            (data: [NSDate: Double]) in
+            var rawData = [Double]()
+            let sortedKeys = data.keys.sort({
+                (date1, date2) in
+                return date1.compare(date2) == NSComparisonResult.OrderedAscending
+            })
+            for key in sortedKeys {
+                rawData.append(data[key]!)
+            }
+            self.lineChartView.setLineChartData(["a"], data: rawData)
+        })
     }
 }
